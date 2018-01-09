@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YAPoTo</title>
+    <link media="screen" href="css/main.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Handlee|Slabo+27px" rel="stylesheet">
+  </head>
+  <body>
+    <div id="message">
+      <h1><img src="images/tomato128.png" height="80"/> YAPoTo</h1>
+      <h3> Yet Another Pomodoro Tool</h3>
+      <div id="display">
+         <span id="displayT">00:00</span>
+               <span id="displayM">000</span>
+      </div>
+
+
+      <button class="btn" id="start"/><i class="fa fa-play" aria-hidden="true"></i> Start</button>
+      <button class="btn" id="stop"/><i class="fa fa-stop" aria-hidden="true"></i> Stop</button>
+      <button class="btn" id="reset"/><i class="fa fa-repeat" aria-hidden="true"></i> Reset</button>
+
+    </div>
+    <!-- <p id="load">Firebase SDK Loading&hellip;</p> -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+      //   try {
+      //     let app = firebase.app();
+      //     let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+      //     document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+      //   } catch (e) {
+      //     console.error(e);
+      //     document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+      //   }
+      });
+    </script>
+    <div class="disclaimer">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
+
+    <script src="https://use.fontawesome.com/ff887cde6c.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment-with-locales.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/4.8.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/4.8.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/4.8.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/4.8.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/4.8.1/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+  </body>
+</html>
