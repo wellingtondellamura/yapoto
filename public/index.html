@@ -15,14 +15,19 @@
          <span id="displayT">00:00</span>
                <span id="displayM">000</span>
       </div>
-
-
       <button class="btn" id="start"/><i class="fa fa-play" aria-hidden="true"></i> Start</button>
       <button class="btn" id="stop"/><i class="fa fa-stop" aria-hidden="true"></i> Stop</button>
       <button class="btn" id="continue"/><i class="fa fa-forward" aria-hidden="true"></i> Continue</button>
       <button class="btn" id="reset"/><i class="fa fa-repeat" aria-hidden="true"></i> Reset</button>
-
     </div>
+    
+    <audio id="audioBell">
+      <source src="sounds/shipbell.mp3" type="audio/mpeg">
+         Sorry, your browser does not support the audio element.
+    </audio>
+
+
+
     <!-- <p id="load">Firebase SDK Loading&hellip;</p> -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {

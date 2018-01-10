@@ -2,6 +2,12 @@ var btnStart = document.getElementById("start");
 var btnReset = document.getElementById("reset");
 var btnContinue = document.getElementById("continue");
 var btnStop = document.getElementById("stop");
+var audioBell = document.getElementById("audioBell");
+
+var DEFAULT_TICK = 20;
+var POMODORO = 0;
+var SHORT_BREAK = 1;
+var LONG_BREAK = 2;
 
 var timer = {
    value : new Date(),
@@ -9,10 +15,20 @@ var timer = {
    pomodoro : 25,
    shortBreak : 5,
    longBreak : 15,
-   getMilliseconds : function(){return this.value.getTime() - new Date().getTime()}
+   mode: POMODORO,
+   max: function(){
+      switch (this.mode) {
+         case POMODORO: return this.pomodoro;
+         case SHORT_BREAK: return this.shortBreak;
+         case LONG_BREAK: return this.longBreak;
+      }
+   },
+   maxMilliseconds: function(){return this.max()*60*1000;},
+   getMilliseconds: function(){return this.getDiffMilliseconds() + this.maxMilliseconds(); },
+   getDiffMilliseconds : function(){
+      return this.value.getTime() - new Date().getTime()}
 }
 
-var DEFAULT_TICK = 20;
 
 btnStart.addEventListener("click", function(){
    showContinue(false);
@@ -66,18 +82,30 @@ function resumeTimer(){
 function resetTimer(){
    timer.started = false;
    timer.value = new Date();
-   setTimeout(function(){updateTimer(0, timer.pomodoro);}, DEFAULT_TICK*2);
+   setTimeout(function(){updateTimer(timer.maxMilliseconds());}, DEFAULT_TICK*2);
+}
+
+function checkTime(){
+   if (timer.getMilliseconds() <= DEFAULT_TICK){
+      endTime();
+   }
+}
+
+function endTime(){
+   audioBell.play();
+   timer.started = false;
+   updateTimer(0);
 }
 
 function tick(){
    if (timer.started) {
       setTimeout(tick, DEFAULT_TICK);
    }
-   updateTimer(timer.getMilliseconds(), timer.pomodoro);
+   updateTimer(timer.getMilliseconds());
+   checkTime();
 }
 
-function updateTimer(m, t){
-   m = m + t*60*1000;
+function updateTimer(m){
    var mil = m % 1000;
    var s = Math.floor(m / 1000);
    var sec = s % 60;
@@ -95,3 +123,4 @@ Number.prototype.pad = function(size) {
 }
 
 resetTimer();
+audioBell.load();
