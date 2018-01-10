@@ -3,3 +3,5 @@
 <hr/>
 
 #### This tool pretends to help the people to make a better use of his disponible time.
+
+![Screen](https://raw.githubusercontent.com/wellingtondellamura/yapoto/master/public/images/screen.png)
