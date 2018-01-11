@@ -11,6 +11,13 @@
     <div id="message">
       <h1><img id="logo" src="images/tomato128.png" height="80"/> YAPoTo</h1>
       <h3> Yet Another Pomodoro Tool</h3>
+
+      <div id="pomodoro-mode" pomodoro-mode>
+        <button id="pomodoro" class="btn is-active">Pomodoro</button>
+        <button id="shortBreak" class="btn">Short Break</button>
+        <button id="longBreak" class="btn">Long Break</button>
+      </div>
+
       <div id="display">
          <span id="displayT">00:00</span>
                <span id="displayM">000</span>
@@ -20,7 +27,7 @@
       <button class="btn" id="continue"/><i class="fa fa-forward" aria-hidden="true"></i> Continue</button>
       <button class="btn" id="reset"/><i class="fa fa-repeat" aria-hidden="true"></i> Reset</button>
     </div>
-    
+
     <audio id="audioBell">
       <source src="sounds/shipbell.mp3" type="audio/mpeg">
          Sorry, your browser does not support the audio element.

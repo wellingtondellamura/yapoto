@@ -3,6 +3,10 @@ var btnReset = document.getElementById("reset");
 var btnContinue = document.getElementById("continue");
 var btnStop = document.getElementById("stop");
 var audioBell = document.getElementById("audioBell");
+var btnPomodoro = document.getElementById("pomodoro");
+var btnShortBreak = document.getElementById("shortBreak");
+var btnLongBreak = document.getElementById("longBreak");
+
 
 var DEFAULT_TICK = 20;
 var POMODORO = 0;
@@ -29,7 +33,6 @@ var timer = {
       return this.value.getTime() - new Date().getTime()}
 }
 
-
 btnStart.addEventListener("click", function(){
    showContinue(false);
    startTimer();
@@ -49,6 +52,31 @@ btnReset.addEventListener("click", function(){
    showContinue(false);
    resetTimer();
 });
+
+btnPomodoro.addEventListener("click", function(){
+   btnActivate(this);
+   timer.mode = POMODORO;
+   resetTimer();
+});
+
+btnShortBreak.addEventListener("click", function(){
+   btnActivate(this);
+   timer.mode = SHORT_BREAK;
+   resetTimer();
+});
+
+btnLongBreak.addEventListener("click", function(){
+   btnActivate(this);
+   timer.mode = LONG_BREAK;
+   resetTimer();
+});
+
+function btnActivate(btn) {
+   btnPomodoro.classList.remove("is-active");
+   btnShortBreak.classList.remove("is-active");
+   btnLongBreak.classList.remove("is-active");
+   btn.classList.add("is-active");
+}
 
 function showContinue(b){
    if (b){
@@ -85,24 +113,17 @@ function resetTimer(){
    setTimeout(function(){updateTimer(timer.maxMilliseconds());}, DEFAULT_TICK*2);
 }
 
-function checkTime(){
-   if (timer.getMilliseconds() <= DEFAULT_TICK){
-      endTime();
-   }
-}
-
-function endTime(){
-   audioBell.play();
-   timer.started = false;
-   updateTimer(0);
-}
-
 function tick(){
-   if (timer.started) {
-      setTimeout(tick, DEFAULT_TICK);
+   if (!timer.started) {
+      return;
    }
+   setTimeout(tick, DEFAULT_TICK);
    updateTimer(timer.getMilliseconds());
-   checkTime();
+   if (timer.getMilliseconds() <= DEFAULT_TICK){
+      audioBell.play();
+      timer.started = false;
+      updateTimer(0);
+   }
 }
 
 function updateTimer(m){

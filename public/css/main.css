@@ -62,6 +62,29 @@ a {text-decoration: none; color: #004B8D;}
    margin: 5px;
 }
 
+#pomodoro-mode {
+   text-align: center;
+   width: 100%;
+}
+
+#pomodoro-mode .btn {
+   width: 100px;
+   height: 30px;
+   border: 1px solid #223A5E;
+   text-align: center;
+   color: #223A5E;
+   font-weight: bold;
+   font-size: 14px;
+   border-radius: 5px;
+   background-color: #ffffff;
+   margin-left: 0px;
+   margin-right: 0px;
+}
+
+#pomodoro-mode .is-active{
+   color: #ffffff;
+   background-color: #223A5E;
+}
 
 @media (max-width: 600px) {
  body, #message { margin-top: 0; background: white; box-shadow: none; }
@@ -69,7 +92,7 @@ a {text-decoration: none; color: #004B8D;}
  #message h1 { font-size: 65px;}
  #message h3 { font-size: 20px;}
  #logo { width: 48px; height: 48px;}
- .btn {font-size: 14px; width: 95px;}
+ .btn {font-size: 12px; width: 95px;}
  #displayT {font-size: 90px;}
  #displayM {font-size: 32px;}
 }
