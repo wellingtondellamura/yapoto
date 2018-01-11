@@ -36,6 +36,9 @@ var timer = {
 btnStart.addEventListener("click", function(){
    showContinue(false);
    startTimer();
+   btnEnable(btnStop, true);
+   btnEnable(btnReset, true);
+   btnEnable(btnStart, false);
 });
 
 btnStop.addEventListener("click", function(){
@@ -51,6 +54,9 @@ btnContinue.addEventListener("click", function(){
 btnReset.addEventListener("click", function(){
    showContinue(false);
    resetTimer();
+   btnEnable(btnStop, false);
+   btnEnable(btnReset, false);
+   btnEnable(btnStart, true);
 });
 
 btnPomodoro.addEventListener("click", function(){
@@ -76,6 +82,17 @@ function btnActivate(btn) {
    btnShortBreak.classList.remove("is-active");
    btnLongBreak.classList.remove("is-active");
    btn.classList.add("is-active");
+}
+
+function btnEnable(btn, b) {
+   if (b) {
+      btn.classList.add("btn-enabled");
+      btn.classList.remove("btn-disabled");
+   } else {
+      btn.classList.remove("btn-enabled");
+      btn.classList.add("btn-disabled");
+   }
+   btn.disabled = !b;
 }
 
 function showContinue(b){
@@ -145,3 +162,6 @@ Number.prototype.pad = function(size) {
 
 resetTimer();
 audioBell.load();
+btnEnable(btnStop, false);
+btnEnable(btnReset, false);
+btnEnable(btnStart, true);

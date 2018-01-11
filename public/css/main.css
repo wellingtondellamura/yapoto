@@ -86,6 +86,15 @@ a {text-decoration: none; color: #004B8D;}
    background-color: #223A5E;
 }
 
+.btn-enabled{
+   color: #ffffff;
+}
+
+.btn-disabled{
+   /*color: #898E8C;*/
+   opacity: 0.7;
+}
+
 @media (max-width: 600px) {
  body, #message { margin-top: 0; background: white; box-shadow: none; }
  body { border-top: 10px solid #DB2818;  border-bottom: 10px solid #DB2818; }
