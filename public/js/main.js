@@ -7,6 +7,14 @@ var btnPomodoro = document.getElementById("pomodoro");
 var btnShortBreak = document.getElementById("shortBreak");
 var btnLongBreak = document.getElementById("longBreak");
 
+var btnConfig = document.getElementById("config");
+var btnRestoreConfig = document.getElementById("restoreConfig");
+var btnSaveConfig = document.getElementById("saveConfig");
+var btnCloseConfig = document.getElementById("closeConfig");
+var inputPomodoro = document.getElementById("inputPomodoro");
+var inputShortBreak = document.getElementById("inputShortBreak");
+var inputLongBreak = document.getElementById("inputLongBreak");
+
 
 var DEFAULT_TICK = 20;
 var POMODORO = 0;
@@ -15,6 +23,7 @@ var LONG_BREAK = 2;
 
 var timer = {
    value : new Date(),
+   timeStop : new Date(),
    started : false,
    pomodoro : 25,
    shortBreak : 5,
@@ -77,6 +86,32 @@ btnLongBreak.addEventListener("click", function(){
    resetTimer();
 });
 
+btnRestoreConfig.addEventListener("click", function(){
+   inputPomodoro.value = 25;
+   inputLongBreak.value = 15;
+   inputShortBreak.value = 5;
+});
+
+
+btnConfig.addEventListener("click", function(){
+   inputPomodoro.value = timer.pomodoro;
+   inputLongBreak.value = timer.longBreak;
+   inputShortBreak.value = timer.shortBreak;
+   $('#modalConfig').modal('open');
+});
+
+btnCloseConfig.addEventListener("click", function(){
+   $('#modalConfig').modal('close');
+});
+
+btnSaveConfig.addEventListener("click", function(){
+   timer.pomodoro = inputPomodoro.value;
+   timer.longBreak = inputLongBreak.value;
+   timer.shortBreak = inputShortBreak.value;
+   $('#modalConfig').modal('close');
+   resetTimer();
+});
+
 function btnActivate(btn) {
    btnPomodoro.classList.remove("is-active");
    btnShortBreak.classList.remove("is-active");
@@ -110,17 +145,20 @@ function showContinue(b){
 }
 
 function startTimer(){
-   timer.value = new Date();
    timer.started = true;
+   timer.value = new Date();
    tick();
 }
 
 function stopTimer(){
    timer.started = false;
+   timer.timeStop = new Date();
 }
 
 function resumeTimer(){
    timer.started = true;
+   var st = timer.timeStop.getTime();
+   timer.value = time.timeStop;
    tick();
 }
 
@@ -140,6 +178,9 @@ function tick(){
       audioBell.play();
       timer.started = false;
       updateTimer(0);
+      btnEnable(btnStop, false);
+      btnEnable(btnReset, false);
+      btnEnable(btnStart, true);
    }
 }
 
@@ -160,8 +201,12 @@ Number.prototype.pad = function(size) {
   return s;
 }
 
-resetTimer();
-audioBell.load();
-btnEnable(btnStop, false);
-btnEnable(btnReset, false);
-btnEnable(btnStart, true);
+$(document).ready(function(){
+   resetTimer();
+   audioBell.load();
+   btnEnable(btnStop, false);
+   btnEnable(btnReset, false);
+   btnEnable(btnStart, true);
+
+   $('.modal').modal();
+ });

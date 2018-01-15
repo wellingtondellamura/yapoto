@@ -6,72 +6,78 @@
     <title>YAPoTo</title>
     <link media="screen" href="css/main.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Handlee|Slabo+27px" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body>
     <div id="message">
+      <div id="tools">
+         <button class="btn-tool" id="config"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+      </div>
       <h1><img id="logo" src="images/tomato128.png" height="80"/> YAPoTo</h1>
       <h3> Yet Another Pomodoro Tool</h3>
 
       <div id="pomodoro-mode" pomodoro-mode>
-        <button id="pomodoro" class="btn is-active">Pomodoro</button>
-        <button id="shortBreak" class="btn">Short Break</button>
-        <button id="longBreak" class="btn">Long Break</button>
+        <button id="pomodoro" class="my-btn is-active">Pomodoro</button>
+        <button id="shortBreak" class="my-btn">Short Break</button>
+        <button id="longBreak" class="my-btn">Long Break</button>
       </div>
 
       <div id="display">
          <span id="displayT">00:00</span>
                <span id="displayM">000</span>
       </div>
-      <button class="btn" id="start"/><i class="fa fa-play" aria-hidden="true"></i> Start</button>
-      <button class="btn" id="stop"/><i class="fa fa-stop" aria-hidden="true"></i> Stop</button>
-      <button class="btn" id="continue"/><i class="fa fa-forward" aria-hidden="true"></i> Continue</button>
-      <button class="btn" id="reset"/><i class="fa fa-repeat" aria-hidden="true"></i> Reset</button>
+      <button class="my-btn" id="start"/><i class="fa fa-play" aria-hidden="true"></i> Start</button>
+      <button class="my-btn" id="stop"/><i class="fa fa-stop" aria-hidden="true"></i> Stop</button>
+      <button class="my-btn" id="continue"/><i class="fa fa-forward" aria-hidden="true"></i> Continue</button>
+      <button class="my-btn" id="reset"/><i class="fa fa-repeat" aria-hidden="true"></i> Reset</button>
     </div>
-
     <audio id="audioBell">
       <source src="sounds/shipbell.mp3" type="audio/mpeg">
          Sorry, your browser does not support the audio element.
     </audio>
 
 
+     <div id="modalConfig" class="modal" style="width: 300px;">
+       <div class="modal-content">
+         <h4>Configurations</h4>
+         <p>Configure your tool</p>
+         <form action="#">
+               <label for="icon_prefix">Pomodo (DEFAULT 25)</label>
+               <input type="number" id="inputPomodoro" min="1" max="60" value="25" />
+            </p>
+            <p class="range-field">
+               <label for="icon_prefix">Short Break (DEFAULT 05)</label>
+               <input type="number" id="inputShortBreak" min="1" max="60" value="5" />
+            </p>
+            <p class="range-field">
+               <label for="icon_prefix">Long Break (DEFAULT 15)</label>
+               <input type="number" id="inputLongBreak" min="1" max="60" value="15" />
+            </p>
+         </form>
+       </div>
+       <div class="modal-footer" style="text-align: center;">
+         <button class="my-btn-dialog" id="restoreConfig"/><i class="fa fa-history" aria-hidden="true"></i> Restore</button>
+         <button class="my-btn-dialog" id="closeConfig"/><i class="fa fa-close" aria-hidden="true"></i> Cancel</button>
+         <button class="my-btn-dialog" id="saveConfig"/><i class="fa fa-save" aria-hidden="true"></i> Save</button>
+       </div>
+     </div>
 
-    <!-- <p id="load">Firebase SDK Loading&hellip;</p> -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
-      //   try {
-      //     let app = firebase.app();
-      //     let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-      //     document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-      //   } catch (e) {
-      //     console.error(e);
-      //     document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-      //   }
-      });
-    </script>
     <div class="disclaimer">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-
-
+    <!-- <p id="load">Firebase SDK Loading&hellip;</p> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="https://use.fontawesome.com/ff887cde6c.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment-with-locales.min.js"></script>
-    <script src="js/main.js"></script>
-    <!-- update the version number as needed -->
+
     <script defer src="/__/firebase/4.8.1/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/4.8.1/firebase-auth.js"></script>
     <script defer src="/__/firebase/4.8.1/firebase-database.js"></script>
     <script defer src="/__/firebase/4.8.1/firebase-messaging.js"></script>
     <script defer src="/__/firebase/4.8.1/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/firebase-scripts.js"></script>
   </body>
 </html>

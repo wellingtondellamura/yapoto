@@ -1,7 +1,7 @@
 body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
 a {text-decoration: none; color: #004B8D;}
 
-#message { background: white; max-width: 460px; margin:50px auto 16px; padding: 32px 24px; border-radius: 5px; text-align: center;}
+#message { background: white; max-width: 460px; margin:50px auto 16px;  padding: 5px; padding-bottom: 24px; border-radius: 5px; text-align: center;}
 #message h2 { color: #ffa100; font-weight: bold; font-size: 32px; margin: 0 0 8px; }
 
 #message h1 { font-size: 102px; text-align: center; font-weight: 300; color: #3d3d29; margin: 0 0 0 0; font-family: 'Slabo 27px', serif;}
@@ -26,17 +26,44 @@ a {text-decoration: none; color: #004B8D;}
 }
 
 
-.btn {
-   width: 110px;
+.my-btn {
+   width: 120px;
    height: 50px;
    border: none;
    text-align: center;
    color: #ffffff;
+   background-color: #f0f0f0;
    font-weight: bold;
    font-size: 16px;
    border-radius: 5px;
    margin: 5px;
 }
+
+
+.my-btn-dialog {
+   width: 80px;
+   height: 35px;
+   border: none;
+   text-align: center;
+   color: #3d3d29;
+   font-weight: bold;
+   font-size: 12px;
+   border-radius: 5px;
+   margin: 1px;
+}
+
+#closeConfig {
+   background-color: #f0f0f0;
+}
+
+#saveConfig {
+   background-color: #f0f0f0;
+}
+
+#restoreConfig {
+   background-color: #f0f0f0;
+}
+
 
 #start {
    background-color: #92B558;
@@ -47,12 +74,29 @@ a {text-decoration: none; color: #004B8D;}
 #reset {
    background-color: #F6D155;
 }
+
 #continue {
    background-color: white;
    color: #DC4C46;
    border: 1px solid #DC4C46;
    visibility: hidden;
    display: none;
+}
+
+.btn-tool {
+   width: 32px;
+   height: 32px;
+   border: none;
+   text-align: center;
+   color: #3d3d29;
+   font-weight: bold;
+   font-size: 16px;
+   border-radius: 5px;
+   margin: 5px;
+}
+
+#config {
+   background-color: #f0f0f0;
 }
 
 
@@ -67,14 +111,14 @@ a {text-decoration: none; color: #004B8D;}
    width: 100%;
 }
 
-#pomodoro-mode .btn {
+#pomodoro-mode .my-btn {
    width: 100px;
    height: 30px;
    border: 1px solid #223A5E;
    text-align: center;
    color: #223A5E;
    font-weight: bold;
-   font-size: 14px;
+   font-size: 12px;
    border-radius: 5px;
    background-color: #ffffff;
    margin-left: 0px;
@@ -86,13 +130,21 @@ a {text-decoration: none; color: #004B8D;}
    background-color: #223A5E;
 }
 
+#tools{
+   margin: 0;
+   padding: 0;
+   width: 100%;
+   text-align: right;
+}
+
+
 .btn-enabled{
    color: #ffffff;
 }
 
 .btn-disabled{
    /*color: #898E8C;*/
-   opacity: 0.7;
+   opacity: 0.5;
 }
 
 @media (max-width: 600px) {
@@ -101,7 +153,9 @@ a {text-decoration: none; color: #004B8D;}
  #message h1 { font-size: 65px;}
  #message h3 { font-size: 20px;}
  #logo { width: 48px; height: 48px;}
- .btn {font-size: 12px; width: 95px;}
+ .my-btn {font-size: 12px; width: 95px; margin-left: 0px; margin-right: 0px; height: 40px;}
+ #pomodoro-mode .my-btn {font-size: 10px; width: 80px;}
  #displayT {font-size: 90px;}
  #displayM {font-size: 32px;}
+ .disclaimer {font-size: 9px;}
 }
