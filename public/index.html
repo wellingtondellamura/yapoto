@@ -32,28 +32,56 @@
       <button class="my-btn" id="continue"/><i class="fa fa-forward" aria-hidden="true"></i> Continue</button>
       <button class="my-btn" id="reset"/><i class="fa fa-repeat" aria-hidden="true"></i> Reset</button>
     </div>
+
     <audio id="audioBell">
-      <source src="sounds/shipbell.mp3" type="audio/mpeg">
-         Sorry, your browser does not support the audio element.
-    </audio>
+      <source src="sounds/shipbell.mp3" type="audio/mp3">
+      Sorry, your browser does not support the audio element.
+   </audio>
+   <audio id="audioTick">
+      <source src="sounds/tick-tock.mp3" type="audio/mp3">
+      Sorry, your browser does not support the audio element.
+   </audio>
+
+   <div id="modalDisclaimer" class="modal modal-fixed-footer" style="width: 330px; height: 440px;">
+     <div class="modal-content">
+       <h4>About</h4>
+       <p style="font-size: 12px;">
+
+          <h5><i class="fa fa-github" aria-hidden="true"></i><a href="https://github.com/wellingtondellamura/yapoto" target="_blank" title="yapoto"> Fork me on Github </a> </h5>
+          <hr/>
+
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          This service is powered by <a href="https://firebase.google.com" target="_blank" title="firebase.google.com">Firebase</a>. <br/>
+          <br />
+          <strong>Also uses: </strong><br />
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          Font Awesome by Dave Gandy - <a href="http://fontawesome.io " target="_blank" title="fontawesome.io ">fontawesome.io</a>. <br/>
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          MaterializeCSS - <a href="http://materializecss.com" target="_blank" title="materializecss.com">materializecss.com</a>. <br/>
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          JQuery Javascript Library - <a href="https://jquery.com/" target="_blank" title="jquery.com">jquery.com</a>. <br/>
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons" target="_blank">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>.
+       </p>
+     </div>
+     <div class="modal-footer" style="text-align: center;">
+        <button data-target="modalDisclaimer" class="btn modal-action modal-close">Close</button>
+     </div>
+   </div>
 
 
-     <div id="modalConfig" class="modal" style="width: 300px;">
+     <div id="modalConfig" class="modal modal-fixed-footer" style="width: 330px; height: 440px;">
        <div class="modal-content">
          <h4>Configurations</h4>
-         <p>Configure your tool</p>
          <form action="#">
-               <label for="icon_prefix">Pomodo (DEFAULT 25)</label>
+               <label>Pomodo (DEFAULT 25)</label>
                <input type="number" id="inputPomodoro" min="1" max="60" value="25" />
-            </p>
-            <p class="range-field">
-               <label for="icon_prefix">Short Break (DEFAULT 05)</label>
+
+               <label>Short Break (DEFAULT 05)</label>
                <input type="number" id="inputShortBreak" min="1" max="60" value="5" />
-            </p>
-            <p class="range-field">
-               <label for="icon_prefix">Long Break (DEFAULT 15)</label>
+
+               <label>Long Break (DEFAULT 15)</label>
                <input type="number" id="inputLongBreak" min="1" max="60" value="15" />
-            </p>
          </form>
        </div>
        <div class="modal-footer" style="text-align: center;">
@@ -64,7 +92,7 @@
      </div>
 
 
-    <div class="disclaimer">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+    <div class="disclaimer">copyright 2018 - Wellington Della Mura - All Rights Reserved - <a id="lnDisclaimer">About this service</a></div>
     <!-- <p id="load">Firebase SDK Loading&hellip;</p> -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>

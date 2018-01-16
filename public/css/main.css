@@ -4,8 +4,8 @@ a {text-decoration: none; color: #004B8D;}
 #message { background: white; max-width: 460px; margin:50px auto 16px;  padding: 5px; padding-bottom: 24px; border-radius: 5px; text-align: center;}
 #message h2 { color: #ffa100; font-weight: bold; font-size: 32px; margin: 0 0 8px; }
 
-#message h1 { font-size: 102px; text-align: center; font-weight: 300; color: #3d3d29; margin: 0 0 0 0; font-family: 'Slabo 27px', serif;}
-#message h3 {font-size: 28px; color: #DB2818; text-align: center; font-family: 'Handlee', cursive; margin-top: 0px;}
+#message h1 { font-size: 102px; text-align: center; font-weight: 300; color: #3d3d29; margin: 0 0 0 0; margin-bottom: 0px;font-family: 'Slabo 27px', serif;}
+#message h3 {font-size: 28px; color: #DB2818; text-align: center; font-family: 'Handlee', cursive; margin-top: 0px; margin-bottom: 0px;}
 
 #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
 #message, #message a { box-shadow: 0 2px 6px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.24); }
@@ -13,6 +13,9 @@ a {text-decoration: none; color: #004B8D;}
 
 #display {
    text-align: center;
+   margin-bottom: 0px;
+   margin-top: 0px;
+   padding: 0px;
 }
 
 #displayT {
@@ -41,13 +44,13 @@ a {text-decoration: none; color: #004B8D;}
 
 
 .my-btn-dialog {
-   width: 80px;
+   width: 90px;
    height: 35px;
    border: none;
    text-align: center;
    color: #3d3d29;
    font-weight: bold;
-   font-size: 12px;
+   font-size: 14px;
    border-radius: 5px;
    margin: 1px;
 }
@@ -109,9 +112,11 @@ a {text-decoration: none; color: #004B8D;}
 #pomodoro-mode {
    text-align: center;
    width: 100%;
+   margin-bottom: 0px;
 }
 
 #pomodoro-mode .my-btn {
+   margin-bottom: 0px;
    width: 100px;
    height: 30px;
    border: 1px solid #223A5E;

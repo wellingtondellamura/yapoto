@@ -3,6 +3,7 @@ var btnReset = document.getElementById("reset");
 var btnContinue = document.getElementById("continue");
 var btnStop = document.getElementById("stop");
 var audioBell = document.getElementById("audioBell");
+var audioTick = document.getElementById("audioTick");
 var btnPomodoro = document.getElementById("pomodoro");
 var btnShortBreak = document.getElementById("shortBreak");
 var btnLongBreak = document.getElementById("longBreak");
@@ -14,7 +15,7 @@ var btnCloseConfig = document.getElementById("closeConfig");
 var inputPomodoro = document.getElementById("inputPomodoro");
 var inputShortBreak = document.getElementById("inputShortBreak");
 var inputLongBreak = document.getElementById("inputLongBreak");
-
+var lnDisclaimer = document.getElementById("lnDisclaimer");
 
 var DEFAULT_TICK = 20;
 var POMODORO = 0;
@@ -24,6 +25,12 @@ var LONG_BREAK = 2;
 var timer = {
    value : new Date(),
    timeStop : new Date(),
+   sound : {
+      tick : true,
+      tickSound : 'tick-tock.mp3',
+      finish : true,
+      finishSound : 'shipbell.mp3'
+   },
    started : false,
    pomodoro : 25,
    shortBreak : 5,
@@ -112,6 +119,10 @@ btnSaveConfig.addEventListener("click", function(){
    resetTimer();
 });
 
+lnDisclaimer.addEventListener("click", function() {
+   $('#modalDisclaimer').modal('open');
+});
+
 function btnActivate(btn) {
    btnPomodoro.classList.remove("is-active");
    btnShortBreak.classList.remove("is-active");
@@ -144,21 +155,34 @@ function showContinue(b){
    }
 }
 
+function tickSound(s){
+   if (s) {
+      audioTick.loop = true;
+      audioTick.play();
+   } else {
+      audioTick.pause();
+   }
+
+}
+
 function startTimer(){
    timer.started = true;
    timer.value = new Date();
    tick();
+   tickSound(true);
 }
 
 function stopTimer(){
+   tickSound(false);
    timer.started = false;
    timer.timeStop = new Date();
 }
 
 function resumeTimer(){
    timer.started = true;
-   var st = timer.timeStop.getTime();
-   timer.value = time.timeStop;
+   var resume = (new Date()).getTime() - timer.timeStop.getTime();
+   timer.value = new Date(timer.value.getTime() + resume);
+   tickSound(true);
    tick();
 }
 
@@ -166,6 +190,7 @@ function resetTimer(){
    timer.started = false;
    timer.value = new Date();
    setTimeout(function(){updateTimer(timer.maxMilliseconds());}, DEFAULT_TICK*2);
+   tickSound(false);
 }
 
 function tick(){
@@ -175,6 +200,7 @@ function tick(){
    setTimeout(tick, DEFAULT_TICK);
    updateTimer(timer.getMilliseconds());
    if (timer.getMilliseconds() <= DEFAULT_TICK){
+      audioTick.pause();
       audioBell.play();
       timer.started = false;
       updateTimer(0);
