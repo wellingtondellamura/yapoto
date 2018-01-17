@@ -15,6 +15,11 @@ var btnCloseConfig = document.getElementById("closeConfig");
 var inputPomodoro = document.getElementById("inputPomodoro");
 var inputShortBreak = document.getElementById("inputShortBreak");
 var inputLongBreak = document.getElementById("inputLongBreak");
+
+var chkTick = document.getElementById("chkTick");
+var chkFinish = document.getElementById("chkFinish");
+
+
 var lnDisclaimer = document.getElementById("lnDisclaimer");
 
 var DEFAULT_TICK = 20;
@@ -97,6 +102,8 @@ btnRestoreConfig.addEventListener("click", function(){
    inputPomodoro.value = 25;
    inputLongBreak.value = 15;
    inputShortBreak.value = 5;
+   chkTick.checked = true;
+   chkFinish.checked = true;
 });
 
 
@@ -104,6 +111,8 @@ btnConfig.addEventListener("click", function(){
    inputPomodoro.value = timer.pomodoro;
    inputLongBreak.value = timer.longBreak;
    inputShortBreak.value = timer.shortBreak;
+   chkTick.checked = timer.sound.tick;
+   chkFinish.checked = timer.sound.finish;
    $('#modalConfig').modal('open');
 });
 
@@ -115,8 +124,10 @@ btnSaveConfig.addEventListener("click", function(){
    timer.pomodoro = inputPomodoro.value;
    timer.longBreak = inputLongBreak.value;
    timer.shortBreak = inputShortBreak.value;
+   timer.sound.tick = chkTick.checked;
+   timer.sound.finish = chkFinish.checked;
    $('#modalConfig').modal('close');
-   resetTimer();
+   btnReset.click();
 });
 
 lnDisclaimer.addEventListener("click", function() {
@@ -156,7 +167,7 @@ function showContinue(b){
 }
 
 function tickSound(s){
-   if (s) {
+   if (s && timer.sound.tick) {
       audioTick.loop = true;
       audioTick.play();
    } else {
@@ -201,7 +212,9 @@ function tick(){
    updateTimer(timer.getMilliseconds());
    if (timer.getMilliseconds() <= DEFAULT_TICK){
       audioTick.pause();
-      audioBell.play();
+      if (timer.sound.finish){
+            audioBell.play();
+      }
       timer.started = false;
       updateTimer(0);
       btnEnable(btnStop, false);
