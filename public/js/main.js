@@ -286,3 +286,16 @@ $(document).ready(function(){
    btnEnable(btnStart, true);
    $('.modal').modal();
  });
+
+ //** REGISTRO DO SW ************************************************************
+ if ('serviceWorker' in navigator) {
+   navigator.serviceWorker
+     .register('/service-worker.js')
+     .then(function () {
+       console.log('Service worker registered!');
+     })
+     .catch(function(err) {
+       console.log(err);
+     });
+ }
+ //******************************************************************************

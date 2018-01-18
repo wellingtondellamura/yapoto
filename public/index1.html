@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YAPoTo</title>
+    <link media="screen" href="css/main.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Handlee|Slabo+27px" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/icons/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="mask-icon" href="images/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="images/icons/mstile-144x144.png">
+    <meta name="msapplication-config" content="images/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+  </head>
+  <body>
+    <div id="message">
+      <div id="tools">
+         <button class="btn-tool" id="config"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+      </div>
+      <h1><img id="logo" src="images/tomato128.png" height="80"/> YAPoTo</h1>
+      <h3> Yet Another Pomodoro Tool</h3>
+
+      <div id="pomodoro-mode" pomodoro-mode>
+        <button id="pomodoro" class="my-btn is-active">Pomodoro</button>
+        <button id="shortBreak" class="my-btn">Short Break</button>
+        <button id="longBreak" class="my-btn">Long Break</button>
+      </div>
+
+      <div id="display">
+         <span id="displayT">00:00</span>
+               <span id="displayM">000</span>
+      </div>
+      <button class="my-btn" id="start"/><i class="fa fa-play" aria-hidden="true"></i> Start</button>
+      <button class="my-btn" id="stop"/><i class="fa fa-stop" aria-hidden="true"></i> Stop</button>
+      <button class="my-btn" id="continue"/><i class="fa fa-forward" aria-hidden="true"></i> Continue</button>
+      <button class="my-btn" id="reset"/><i class="fa fa-repeat" aria-hidden="true"></i> Reset</button>
+    </div>
+
+    <audio id="audioBell">
+      <source src="sounds/shipbell.mp3" type="audio/mp3">
+      Sorry, your browser does not support the audio element.
+   </audio>
+   <audio id="audioTick">
+      <source src="sounds/tick-tock.mp3" type="audio/mp3">
+      Sorry, your browser does not support the audio element.
+   </audio>
+
+   <div id="modalDisclaimer" class="modal modal-fixed-footer" style="width: 330px; height: 440px;">
+     <div class="modal-content">
+       <h4>About</h4>
+       <p style="font-size: 12px;">
+
+          <h5><i class="fa fa-github" aria-hidden="true"></i><a href="https://github.com/wellingtondellamura/yapoto" target="_blank" title="yapoto"> Fork me on Github </a> </h5>
+          <hr/>
+
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          This service is powered by <a href="https://firebase.google.com" target="_blank" title="firebase.google.com">Firebase</a>. <br/>
+          <br />
+          <strong>Also uses: </strong><br />
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          Font Awesome by Dave Gandy - <a href="http://fontawesome.io " target="_blank" title="fontawesome.io ">fontawesome.io</a>. <br/>
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          MaterializeCSS - <a href="http://materializecss.com" target="_blank" title="materializecss.com">materializecss.com</a>. <br/>
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          JQuery Javascript Library - <a href="https://jquery.com/" target="_blank" title="jquery.com">jquery.com</a>. <br/>
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons" target="_blank">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>.
+       </p>
+     </div>
+     <div class="modal-footer" style="text-align: center;">
+        <button data-target="modalDisclaimer" class="btn modal-action modal-close">Close</button>
+     </div>
+   </div>
+
+
+     <div id="modalConfig" class="modal modal-fixed-footer" style="width: 330px; height: 440px;">
+       <div class="modal-content">
+         <h4>Configurations</h4>
+         <form action="#">
+               <h5>Timers</h5>
+
+               <div class="row">
+                  <div class="col s4">
+                     <label>Pomodo (default 25)</label>
+                     <input type="number" id="inputPomodoro" min="1" max="60" value="25" />
+                  </div>
+                  <div class="col s4">
+                     <label>Short Break (default 05)</label>
+                     <input type="number" id="inputShortBreak" min="1" max="60" value="5" />
+                  </div>
+                  <div class="col s4">
+                     <label>Long Break (default 15)</label>
+                     <input type="number" id="inputLongBreak" min="1" max="60" value="15" />
+                  </div>
+               </div>
+               <h5>Sounds</h5>
+               <div class="row">
+                  <div class="switch col s6">
+                     <label>Tick-tock sound</label><br />
+                     <label>
+                       Off
+                       <input type="checkbox" id="chkTick">
+                       <span class="lever"></span>
+                       On
+                     </label>
+                  </div>
+
+                  <div class="switch col s6">
+                     <label>Finish sound</label><br />
+                     <label>
+                       Off
+                       <input type="checkbox" id="chkFinish">
+                       <span class="lever"></span>
+                       On
+                     </label>
+                  </div>
+               </div>
+
+
+         </form>
+       </div>
+       <div class="modal-footer" style="text-align: center;">
+         <button class="my-btn-dialog" id="restoreConfig"/><i class="fa fa-history" aria-hidden="true"></i> Restore</button>
+         <button class="my-btn-dialog" id="closeConfig"/><i class="fa fa-close" aria-hidden="true"></i> Cancel</button>
+         <button class="my-btn-dialog" id="saveConfig"/><i class="fa fa-save" aria-hidden="true"></i> Save</button>
+       </div>
+     </div>
+
+
+    <div class="disclaimer">copyright 2018 - Wellington Della Mura - All Rights Reserved - <a id="lnDisclaimer">About this service</a></div>
+    <!-- <p id="load">Firebase SDK Loading&hellip;</p> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://use.fontawesome.com/ff887cde6c.js"></script>
+
+    <script defer src="/__/firebase/4.8.1/firebase-app.js"></script>
+    <script defer src="/__/firebase/4.8.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/4.8.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/4.8.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/4.8.1/firebase-storage.js"></script>
+    <script defer src="/__/firebase/init.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/firebase-scripts.js"></script>
+  </body>
+</html>

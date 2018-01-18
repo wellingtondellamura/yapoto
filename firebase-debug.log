@@ -1,17 +1,82 @@
-[debug] [2018-01-18T18:05:45.856Z] ----------------------------------------------------------------------
-[debug] [2018-01-18T18:05:45.859Z] Command:       /usr/bin/nodejs /usr/local/bin/firebase deploy
-[debug] [2018-01-18T18:05:45.860Z] CLI Version:   3.16.0
-[debug] [2018-01-18T18:05:45.860Z] Platform:      linux
-[debug] [2018-01-18T18:05:45.860Z] Node Version:  v7.10.1
-[debug] [2018-01-18T18:05:45.860Z] Time:          Thu Jan 18 2018 16:05:45 GMT-0200 (-02)
-[debug] [2018-01-18T18:05:45.860Z] ----------------------------------------------------------------------
+[debug] [2018-01-18T18:09:02.026Z] ----------------------------------------------------------------------
+[debug] [2018-01-18T18:09:02.032Z] Command:       /usr/bin/nodejs /usr/local/bin/firebase deploy
+[debug] [2018-01-18T18:09:02.034Z] CLI Version:   3.16.0
+[debug] [2018-01-18T18:09:02.034Z] Platform:      linux
+[debug] [2018-01-18T18:09:02.034Z] Node Version:  v7.10.1
+[debug] [2018-01-18T18:09:02.034Z] Time:          Thu Jan 18 2018 16:09:02 GMT-0200 (-02)
+[debug] [2018-01-18T18:09:02.034Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-01-18T18:05:45.881Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-01-18T18:05:45.881Z] > authorizing via signed-in user
-[debug] [2018-01-18T18:05:45.885Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/yapoto-app  
+[debug] [2018-01-18T18:09:02.057Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-18T18:09:02.058Z] > authorizing via signed-in user
+[debug] [2018-01-18T18:09:02.062Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/yapoto-app  
   
- Thu Jan 18 2018 16:05:45 GMT-0200 (-02)
-[debug] [2018-01-18T18:05:47.656Z] <<< HTTP RESPONSE 200
-[debug] [2018-01-18T18:05:47.657Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/yapoto-app/tokens  
+ Thu Jan 18 2018 16:09:02 GMT-0200 (-02)
+[debug] [2018-01-18T18:09:02.999Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-18T18:09:03.000Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/yapoto-app/tokens  
   
- Thu Jan 18 2018 16:05:47 GMT-0200 (-02)
+ Thu Jan 18 2018 16:09:03 GMT-0200 (-02)
+[debug] [2018-01-18T18:09:03.734Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'yapoto-app'...
+[info] 
+[info] i  deploying database, storage, functions, hosting
+[info] i  database: checking rules syntax...
+[debug] [2018-01-18T18:09:04.670Z] >>> HTTP REQUEST PUT https://yapoto-app.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+} 
+ Thu Jan 18 2018 16:09:04 GMT-0200 (-02)
+[debug] [2018-01-18T18:09:05.434Z] <<< HTTP RESPONSE 200
+[info] ✔  database: rules syntax for database yapoto-app is valid
+[debug] [2018-01-18T18:09:05.436Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/yapoto-app  
+  
+ Thu Jan 18 2018 16:09:05 GMT-0200 (-02)
+[debug] [2018-01-18T18:09:06.799Z] <<< HTTP RESPONSE 200
+[info] i  storage: checking storage.rules for compilation errors...
+[debug] [2018-01-18T18:09:06.804Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/yapoto-app:test  
+ { source: { files: [ [Object] ] } } 
+ Thu Jan 18 2018 16:09:06 GMT-0200 (-02)
+[debug] [2018-01-18T18:09:07.793Z] <<< HTTP RESPONSE 200
+[info] ✔  storage: rules file storage.rules compiled successfully
+[debug] [2018-01-18T18:09:07.796Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase serve --only functions",
+    "shell": "firebase experimental:functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "~5.4.2",
+    "firebase-functions": "^0.7.1"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-01-18T18:09:07.798Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/yapoto-app?view=CONSUMER_VIEW  
+  
+ Thu Jan 18 2018 16:09:07 GMT-0200 (-02)
+[debug] [2018-01-18T18:09:07.798Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/yapoto-app?view=CONSUMER_VIEW  
+  
+ Thu Jan 18 2018 16:09:07 GMT-0200 (-02)
+[debug] [2018-01-18T18:09:09.081Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-18T18:09:09.094Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2018-01-18T18:09:09.096Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/yapoto-app  
+  
+ Thu Jan 18 2018 16:09:09 GMT-0200 (-02)
+[debug] [2018-01-18T18:09:09.097Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/yapoto-app/apiKeys  
+  
+ Thu Jan 18 2018 16:09:09 GMT-0200 (-02)
+[debug] [2018-01-18T18:09:10.065Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-18T18:09:10.338Z] <<< HTTP RESPONSE 200
+[info] i  storage: uploading rules storage.rules...
+[debug] [2018-01-18T18:09:10.342Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/yapoto-app/rulesets  
+ { source: { files: [ [Object] ] } } 
+ Thu Jan 18 2018 16:09:10 GMT-0200 (-02)
+[debug] [2018-01-18T18:09:11.395Z] <<< HTTP RESPONSE 200
