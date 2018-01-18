@@ -1,0 +1,17 @@
+[debug] [2018-01-18T18:05:45.856Z] ----------------------------------------------------------------------
+[debug] [2018-01-18T18:05:45.859Z] Command:       /usr/bin/nodejs /usr/local/bin/firebase deploy
+[debug] [2018-01-18T18:05:45.860Z] CLI Version:   3.16.0
+[debug] [2018-01-18T18:05:45.860Z] Platform:      linux
+[debug] [2018-01-18T18:05:45.860Z] Node Version:  v7.10.1
+[debug] [2018-01-18T18:05:45.860Z] Time:          Thu Jan 18 2018 16:05:45 GMT-0200 (-02)
+[debug] [2018-01-18T18:05:45.860Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-01-18T18:05:45.881Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-18T18:05:45.881Z] > authorizing via signed-in user
+[debug] [2018-01-18T18:05:45.885Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/yapoto-app  
+  
+ Thu Jan 18 2018 16:05:45 GMT-0200 (-02)
+[debug] [2018-01-18T18:05:47.656Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-18T18:05:47.657Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/yapoto-app/tokens  
+  
+ Thu Jan 18 2018 16:05:47 GMT-0200 (-02)
