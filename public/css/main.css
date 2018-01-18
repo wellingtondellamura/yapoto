@@ -159,6 +159,7 @@ a {text-decoration: none; color: #004B8D;}
  #message h3 { font-size: 20px;}
  #logo { width: 48px; height: 48px;}
  .my-btn {font-size: 12px; width: 95px; margin-left: 0px; margin-right: 0px; height: 40px;}
+ .btn-tool {width: 32px; height: 32px; font-size: 10px;}
  #pomodoro-mode .my-btn {font-size: 10px; width: 80px;}
  #displayT {font-size: 90px;}
  #displayM {font-size: 32px;}

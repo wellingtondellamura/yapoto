@@ -36,6 +36,8 @@ var timer = {
       finish : true,
       finishSound : 'shipbell.mp3'
    },
+   state : 0,
+   sequence: [POMODORO, SHORT_BREAK, POMODORO, SHORT_BREAK, POMODORO, SHORT_BREAK, POMODORO, LONG_BREAK],
    started : false,
    pomodoro : 25,
    shortBreak : 5,
@@ -50,8 +52,11 @@ var timer = {
    },
    maxMilliseconds: function(){return this.max()*60*1000;},
    getMilliseconds: function(){return this.getDiffMilliseconds() + this.maxMilliseconds(); },
-   getDiffMilliseconds : function(){
-      return this.value.getTime() - new Date().getTime()}
+   getDiffMilliseconds : function(){return this.value.getTime() - new Date().getTime()},
+   nextState(){
+      if (this.state < this.sequence.length-1) { this.state++;} else {this.state = 0;}
+      this.mode = this.sequence[this.state];
+   }
 }
 
 btnStart.addEventListener("click", function(){
@@ -81,20 +86,23 @@ btnReset.addEventListener("click", function(){
 });
 
 btnPomodoro.addEventListener("click", function(){
-   btnActivate(this);
    timer.mode = POMODORO;
+   btnActivate();
+   btnReset.click();
    resetTimer();
 });
 
 btnShortBreak.addEventListener("click", function(){
-   btnActivate(this);
    timer.mode = SHORT_BREAK;
+   btnActivate();
+   btnReset.click();
    resetTimer();
 });
 
 btnLongBreak.addEventListener("click", function(){
-   btnActivate(this);
    timer.mode = LONG_BREAK;
+   btnActivate();
+   btnReset.click();
    resetTimer();
 });
 
@@ -126,18 +134,25 @@ btnSaveConfig.addEventListener("click", function(){
    timer.shortBreak = inputShortBreak.value;
    timer.sound.tick = chkTick.checked;
    timer.sound.finish = chkFinish.checked;
+   savePreferences();
    $('#modalConfig').modal('close');
    btnReset.click();
+   resetTimer();
 });
 
 lnDisclaimer.addEventListener("click", function() {
    $('#modalDisclaimer').modal('open');
 });
 
-function btnActivate(btn) {
+function btnActivate() {
    btnPomodoro.classList.remove("is-active");
    btnShortBreak.classList.remove("is-active");
    btnLongBreak.classList.remove("is-active");
+   switch (timer.mode) {
+      case POMODORO: btn = btnPomodoro; break;
+      case SHORT_BREAK: btn = btnShortBreak; break;
+      case LONG_BREAK: btn = btnLongBreak; break;
+   }
    btn.classList.add("is-active");
 }
 
@@ -215,6 +230,8 @@ function tick(){
       if (timer.sound.finish){
             audioBell.play();
       }
+      timer.nextState();
+      btnActivate();
       timer.started = false;
       updateTimer(0);
       btnEnable(btnStop, false);
@@ -234,6 +251,26 @@ function updateTimer(m){
    displayM.innerText = mil.pad(3);
 }
 
+function savePreferences() {
+   localStorage.setItem("timer.pomodoro", timer.pomodoro);
+   localStorage.setItem("timer.shortBreak", timer.shortBreak);
+   localStorage.setItem("timer.longBreak", timer.longBreak);
+   localStorage.setItem("timer.sound.tick", timer.sound.tick);
+   localStorage.setItem("timer.sound.finish", timer.sound.finish);
+}
+
+function loadPreferences() {
+   if (!localStorage.getItem("timer.pomodoro")) {
+         savePreferences();
+         return;
+   }
+   timer.pomodoro = localStorage.getItem("timer.pomodoro");
+   timer.shortBreak = localStorage.getItem("timer.shortBreak");
+   timer.longBreak = localStorage.getItem("timer.longBreak");
+   timer.sound.tick = localStorage.getItem("timer.sound.tick");
+   timer.sound.finish = localStorage.getItem("timer.sound.finish");
+}
+
 Number.prototype.pad = function(size) {
   var s = String(this);
   while (s.length < (size || 2)) {s = "0" + s;}
@@ -241,11 +278,11 @@ Number.prototype.pad = function(size) {
 }
 
 $(document).ready(function(){
+   loadPreferences();
    resetTimer();
    audioBell.load();
    btnEnable(btnStop, false);
    btnEnable(btnReset, false);
    btnEnable(btnStart, true);
-
    $('.modal').modal();
  });
