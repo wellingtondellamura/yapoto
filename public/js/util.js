@@ -43,6 +43,17 @@ function loadPreferences() {
    timer.sound.finish = localStorage.getItem("timer.sound.finish");
 }
 
+function loadPomodoroHistory(){
+   pomodoroHistory.pomodoro = localStorage.getItem("pomodoroHistory.pomodoro");
+   pomodoroHistory.shortBreak = localStorage.getItem("pomodoroHistory.shortBreak");
+   pomodoroHistory.longBreak = localStorage.getItem("pomodoroHistory.longBreak");
+}
+
+function savePomodoroHistory(){
+   localStorage.setItem("pomodoroHistory.pomodoro", pomodoroHistory.pomodoro);
+   localStorage.setItem("pomodoroHistory.shortBreak", pomodoroHistory.shortBreak);
+   localStorage.setItem("pomodoroHistory.longBreak", pomodoroHistory.longBreak);
+}
 
 Number.prototype.pad = function(size) {
   var s = String(this);

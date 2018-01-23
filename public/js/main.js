@@ -9,6 +9,7 @@ $(document).ready(function(){
    btnEnable(btnStart, true);
    $('.modal').modal();
    $('.collapsible').collapsible();
+   loadPomodoroHistory();
    updateHistoryDisplay();
  });
 

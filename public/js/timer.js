@@ -107,6 +107,7 @@ function addHistory(){
    if (timer.mode == POMODORO) pomodoroHistory.pomodoro++;
    if (timer.mode == SHORT_BREAK) pomodoroHistory.shortBreak++;
    if (timer.mode == LONG_BREAK) pomodoroHistory.longBreak++;
+   savePomodoroHistory();
 }
 
 
