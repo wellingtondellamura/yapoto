@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1"  />
     <title>YAPoTo</title>
     <link media="screen" href="css/main.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Handlee|Slabo+27px" rel="stylesheet">
@@ -34,7 +34,8 @@
   <body>
     <div id="message">
       <div id="tools">
-         <button class="btn-tool" id="config"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+         <button class="btn btn-floating  grey darken-1 modal-trigger" data-target="modalInfo" id="showHistory"><i class="fa fa-info" aria-hidden="true"></i></button>
+         <button class="btn btn-floating grey darken-1" id="config"><i class="fa fa-cogs" aria-hidden="true"></i></button>
       </div>
       <h1><img id="logo" src="images/tomato128.png" height="80"/> YAPoTo</h1>
       <h3> Yet Another Pomodoro Tool</h3>
@@ -54,7 +55,62 @@
       <button class="my-btn" id="continue"/><i class="fa fa-forward" aria-hidden="true"></i> Continue</button>
       <button class="my-btn" id="reset"/><i class="fa fa-repeat" aria-hidden="true"></i> Reset</button>
     </div>
-
+  <div id="modalInfo" class="modal bottom-sheet">
+    <div class="modal-content">
+             <h4>History Information</h4>
+    <div class="row" style="margin: 0 auto;">
+      <div class="col s2">
+           <div class="card green darken-4">
+             <div class="card-content" style="font-size: 24px; font-weight: bold; text-align: center;" id="displayPomodoros">
+                -
+             </div>
+             <div class="card-action" style="font-size: 10px; font-weight: bold; color: #ffffff">
+                Pomodoros
+             </div>
+           </div>
+      </div>
+      <div class="col s2">
+          <div class="card red darken-4">
+             <div class="card-content" style="font-size: 24px; font-weight: bold; text-align: center;" id="displayShortBreaks">
+               -
+             </div>
+             <div class="card-action" style="font-size: 10px; font-weight: bold; color: #ffffff">
+               Short Breaks
+             </div>
+          </div>
+      </div>
+      <div class="col s2">
+          <div class="card amber lighten-1">
+             <div class="card-content" style="font-size: 24px; font-weight: bold; text-align: center;" id="displayLongBreaks">
+                -
+             </div>
+             <div class="card-action" style="font-size: 10px; font-weight: bold; color: #ffffff">
+               Long Breaks
+             </div>
+          </div>
+      </div>
+      <div class="col s6">
+         <table class="bordered highlight responsive-table" id="displayHistory">
+                <thead>
+                  <tr>
+                      <th>Date</th>
+                      <th>Mode</th>
+                      <th>Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>pomodoro</td>
+                    <td>01/01/2018 10:50</td>
+                    <td>01/01/2018 11:15</td>
+                    <td>25</td>
+                  </tr>
+                </tbody>
+             </table>
+      </div>
+    </div>
+    </div>
+  </div>
     <audio id="audioBell">
       <source src="sounds/shipbell.mp3" type="audio/mp3">
       Sorry, your browser does not support the audio element.
@@ -92,7 +148,7 @@
    </div>
 
 
-     <div id="modalConfig" class="modal modal-fixed-footer" style="width: 330px; height: 440px;">
+   <div id="modalConfig" class="modal modal-fixed-footer" style="width: 330px; height: 440px;">
        <div class="modal-content">
          <h4>Configurations</h4>
          <form action="#">
@@ -146,20 +202,24 @@
      </div>
 
 
-    <div class="disclaimer">copyright 2018 - Wellington Della Mura - All Rights Reserved - <a id="lnDisclaimer">About this service</a></div>
+   <div class="disclaimer">copyright 2018 - Wellington Della Mura - All Rights Reserved - <a id="lnDisclaimer">About this service</a></div>
     <!-- <p id="load">Firebase SDK Loading&hellip;</p> -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script src="https://use.fontawesome.com/ff887cde6c.js"></script>
 
-    <script defer src="/__/firebase/4.8.1/firebase-app.js"></script>
-    <script defer src="/__/firebase/4.8.1/firebase-auth.js"></script>
-    <script defer src="/__/firebase/4.8.1/firebase-database.js"></script>
-    <script defer src="/__/firebase/4.8.1/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/4.8.1/firebase-storage.js"></script>
-    <script defer src="/__/firebase/init.js"></script>
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+   <script src="https://use.fontawesome.com/ff887cde6c.js"></script>
 
-    <script src="js/main.js"></script>
-    <script src="js/firebase-scripts.js"></script>
+   <script defer src="js/interface.js"></script>
+   <script defer src="js/util.js"></script>
+   <script defer src="js/timer.js"></script>
+
+   <script defer src="/__/firebase/4.8.1/firebase-app.js"></script>
+   <script defer src="/__/firebase/4.8.1/firebase-auth.js"></script>
+   <script defer src="/__/firebase/4.8.1/firebase-database.js"></script>
+   <script defer src="/__/firebase/4.8.1/firebase-messaging.js"></script>
+   <script defer src="/__/firebase/4.8.1/firebase-storage.js"></script>
+   <script defer src="/__/firebase/init.js"></script>
+   <script src="js/main.js"></script>
+
   </body>
 </html>
