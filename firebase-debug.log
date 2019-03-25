@@ -1,0 +1,41 @@
+[debug] [2018-01-27T16:17:37.295Z] ----------------------------------------------------------------------
+[debug] [2018-01-27T16:17:37.298Z] Command:       /usr/bin/nodejs /usr/local/bin/firebase serve
+[debug] [2018-01-27T16:17:37.299Z] CLI Version:   3.17.3
+[debug] [2018-01-27T16:17:37.299Z] Platform:      linux
+[debug] [2018-01-27T16:17:37.299Z] Node Version:  v7.10.1
+[debug] [2018-01-27T16:17:37.299Z] Time:          Sat Jan 27 2018 14:17:37 GMT-0200 (-02)
+[debug] [2018-01-27T16:17:37.299Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-01-27T16:17:37.322Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-27T16:17:37.322Z] > authorizing via signed-in user
+[debug] [2018-01-27T16:17:37.326Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-01-27T16:17:37.327Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/DUqRi9O4HHkgRdPQU9Ger9AQEgMk7zjHMmnQ7D1hJmw',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Jan 27 2018 14:17:37 GMT-0200 (-02)
+[debug] [2018-01-27T16:17:37.802Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-27T16:17:37.807Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/yapoto-app  
+  
+ Sat Jan 27 2018 14:17:37 GMT-0200 (-02)
+[debug] [2018-01-27T16:17:39.171Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-27T16:17:39.171Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/yapoto-app/tokens  
+  
+ Sat Jan 27 2018 14:17:39 GMT-0200 (-02)
+[debug] [2018-01-27T16:17:40.155Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/wellington/projects/my/yapoto'...
+[info] 
+[debug] [2018-01-27T16:17:40.162Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/yapoto-app  
+  
+ Sat Jan 27 2018 14:17:40 GMT-0200 (-02)
+[debug] [2018-01-27T16:17:41.131Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-27T16:17:41.133Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/162236112116/clients/_:getWebAppConfig  
+  
+ Sat Jan 27 2018 14:17:41 GMT-0200 (-02)
+[debug] [2018-01-27T16:17:42.426Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+

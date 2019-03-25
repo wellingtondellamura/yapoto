@@ -6,7 +6,7 @@
     <title>YAPoTo</title>
     <link media="screen" href="css/main.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Handlee|Slabo+27px" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="components/materialize/dist/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="images/icons/apple-touch-icon-60x60.png">
@@ -34,8 +34,14 @@
   <body>
     <div id="message">
       <div id="tools">
-         <button class="btn btn-floating  grey darken-1 modal-trigger" data-target="modalInfo" id="showHistory"><i class="fa fa-info" aria-hidden="true"></i></button>
-         <button class="btn btn-floating grey darken-1" id="config"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+         <button class="btn btn-floating  grey darken-4" id="soundOn" style="visibility: hidden; display: none;">
+            <i class="material-icons">volume_off</i></button>
+         <button class="btn btn-floating  grey darken-1" id="soundOff">
+            <i class="material-icons">volume_up</i></button>
+         <button class="btn btn-floating  grey darken-1 modal-trigger" data-target="modalInfo" id="showHistory">
+            <i class="material-icons">insert_chart</i></button>
+         <button class="btn btn-floating grey darken-1" id="config">
+            <i class="material-icons">build</i></button>
       </div>
       <h1><img id="logo" src="images/tomato128.png" height="80"/> YAPoTo</h1>
       <h3> Yet Another Pomodoro Tool</h3>
@@ -50,47 +56,47 @@
          <span id="displayT">00:00</span>
                <span id="displayM">000</span>
       </div>
-      <button class="my-btn" id="start"/><i class="fa fa-play" aria-hidden="true"></i> Start</button>
-      <button class="my-btn" id="stop"/><i class="fa fa-stop" aria-hidden="true"></i> Stop</button>
-      <button class="my-btn" id="continue"/><i class="fa fa-forward" aria-hidden="true"></i> Continue</button>
-      <button class="my-btn" id="reset"/><i class="fa fa-repeat" aria-hidden="true"></i> Reset</button>
+      <button class="my-btn" id="start"/><i class="tiny material-icons">play_arrow</i> Start</button>
+      <button class="my-btn" id="stop"/><i class="tiny material-icons">stop</i> Stop</button>
+      <button class="my-btn" id="continue"/><i class="tiny material-icons">fast_forward</i> Continue</button>
+      <button class="my-btn" id="reset"/><i class="tiny material-icons">replay</i> Reset</button>
     </div>
   <div id="modalInfo" class="modal bottom-sheet">
     <div class="modal-content">
              <h4>History Information</h4>
     <div class="row" style="margin: 0 auto;">
-      <div class="col s2">
+      <div class="col s4 m4 l2">
            <div class="card green darken-4">
-             <div class="card-content" style="font-size: 24px; font-weight: bold; text-align: center;" id="displayPomodoros">
+             <div class="card-content" style="font-size: 36px; font-weight: bold; text-align: center;" id="displayPomodoros">
                 -
              </div>
-             <div class="card-action" style="font-size: 10px; font-weight: bold; color: #ffffff">
+             <div class="card-action" style="font-size: 10px; font-weight: bold; text-align:center;">
                 Pomodoros
              </div>
            </div>
       </div>
-      <div class="col s2">
+      <div class="col s4 m4 l2">
           <div class="card red darken-4">
-             <div class="card-content" style="font-size: 24px; font-weight: bold; text-align: center;" id="displayShortBreaks">
+             <div class="card-content" style="font-size: 36px; font-weight: bold; text-align: center;" id="displayShortBreaks">
                -
              </div>
-             <div class="card-action" style="font-size: 10px; font-weight: bold; color: #ffffff">
+             <div class="card-action" style="font-size: 10px; font-weight: bold; text-align:center;">
                Short Breaks
              </div>
           </div>
       </div>
-      <div class="col s2">
+      <div class="col s4 m4 l2">
           <div class="card amber lighten-1">
-             <div class="card-content" style="font-size: 24px; font-weight: bold; text-align: center;" id="displayLongBreaks">
+             <div class="card-content" style="font-size: 36px; font-weight: bold; text-align: center;" id="displayLongBreaks">
                 -
              </div>
-             <div class="card-action" style="font-size: 10px; font-weight: bold; color: #ffffff">
+             <div class="card-action" style="font-size: 10px; font-weight: bold; text-align:center;">
                Long Breaks
              </div>
           </div>
       </div>
-      <div class="col s6">
-         <table class="bordered highlight responsive-table" id="displayHistory">
+      <div class="col s12 m12 l6">
+         <table class="bordered highlight" id="displayHistory">
                 <thead>
                   <tr>
                       <th>Date</th>
@@ -120,7 +126,7 @@
       Sorry, your browser does not support the audio element.
    </audio>
 
-   <div id="modalDisclaimer" class="modal modal-fixed-footer" style="width: 330px; height: 440px;">
+   <div id="modalDisclaimer" class="modal modal-fixed-footer" style="width: 330px; height: 390px;">
      <div class="modal-content">
        <h4>About</h4>
        <p style="font-size: 12px;">
@@ -131,19 +137,18 @@
           <i class="fa fa-arrow-right" aria-hidden="true"></i>
           This service is powered by <a href="https://firebase.google.com" target="_blank" title="firebase.google.com">Firebase</a>. <br/>
           <br />
-          <strong>Also uses: </strong><br />
-          <i class="fa fa-arrow-right" aria-hidden="true"></i>
-          Font Awesome by Dave Gandy - <a href="http://fontawesome.io " target="_blank" title="fontawesome.io ">fontawesome.io</a>. <br/>
-          <i class="fa fa-arrow-right" aria-hidden="true"></i>
-          MaterializeCSS - <a href="http://materializecss.com" target="_blank" title="materializecss.com">materializecss.com</a>. <br/>
-          <i class="fa fa-arrow-right" aria-hidden="true"></i>
-          JQuery Javascript Library - <a href="https://jquery.com/" target="_blank" title="jquery.com">jquery.com</a>. <br/>
-          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          <strong>Also uses: </strong>
+          <ul>
+             <li>MaterializeCSS - <a href="http://materializecss.com" target="_blank" title="materializecss.com">materializecss.com</a>.</li>
+             <li>JQuery Javascript Library - <a href="https://jquery.com/" target="_blank" title="jquery.com">jquery.com</a>.</li>
+          </ul>
+       </p>
+       <p style="border: solid 1px black; text-align:center;">
           Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons" target="_blank">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>.
        </p>
      </div>
      <div class="modal-footer" style="text-align: center;">
-        <button data-target="modalDisclaimer" class="btn modal-action modal-close">Close</button>
+        <button data-target="modalDisclaimer" class="btn modal-action modal-close  grey darken-1">Close</button>
      </div>
    </div>
 
@@ -195,9 +200,9 @@
          </form>
        </div>
        <div class="modal-footer" style="text-align: center;">
-         <button class="my-btn-dialog" id="restoreConfig"/><i class="fa fa-history" aria-hidden="true"></i> Restore</button>
-         <button class="my-btn-dialog" id="closeConfig"/><i class="fa fa-close" aria-hidden="true"></i> Cancel</button>
-         <button class="my-btn-dialog" id="saveConfig"/><i class="fa fa-save" aria-hidden="true"></i> Save</button>
+         <button class="my-btn-dialog" id="restoreConfig"/><i class="tiny material-icons">settings_backup_restore</i>  Restore</button>
+         <button class="my-btn-dialog" id="closeConfig"/><i class="tiny material-icons">cancel</i>  Cancel</button>
+         <button class="my-btn-dialog" id="saveConfig"/><i class="tiny material-icons">save</i>  Save</button>
        </div>
      </div>
 
@@ -205,9 +210,8 @@
    <div class="disclaimer">copyright 2018 - Wellington Della Mura - All Rights Reserved - <a id="lnDisclaimer">About this service</a></div>
     <!-- <p id="load">Firebase SDK Loading&hellip;</p> -->
 
-   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-   <script src="https://use.fontawesome.com/ff887cde6c.js"></script>
+   <script src="components/jquery/dist/jquery.min.js"></script>
+   <script src="components/materialize/dist/js/materialize.js"></script>
 
    <script defer src="js/interface.js"></script>
    <script defer src="js/util.js"></script>

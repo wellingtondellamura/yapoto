@@ -1,0 +1,11 @@
+{
+  "name": "yapoto",
+  "version": "1.0.0",
+  "main": "public/index.html",
+  "repository": "https://github.com/wellingtondellamura/yapoto.git",
+  "author": "wellingtondellamura <della.mura@gmail.com>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "materialize-css": "^0.100.2"
+  }
+}

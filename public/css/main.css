@@ -157,7 +157,7 @@ a {text-decoration: none; color: #004B8D;}
 }
 
 @media (max-width: 600px) {
- body, #message { margin-top: 0; background: white; box-shadow: none; }
+ body, #message { margin-top: 0; background: white; box-shadow: none; min-width: 300px;}
  body { border-top: 10px solid #DB2818;  border-bottom: 10px solid #DB2818; }
  #message h1 { font-size: 65px;}
  #message h3 { font-size: 20px;}

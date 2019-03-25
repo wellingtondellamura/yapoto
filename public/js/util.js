@@ -44,9 +44,9 @@ function loadPreferences() {
 }
 
 function loadPomodoroHistory(){
-   pomodoroHistory.pomodoro = localStorage.getItem("pomodoroHistory.pomodoro");
-   pomodoroHistory.shortBreak = localStorage.getItem("pomodoroHistory.shortBreak");
-   pomodoroHistory.longBreak = localStorage.getItem("pomodoroHistory.longBreak");
+   pomodoroHistory.pomodoro = localStorage.getItem("pomodoroHistory.pomodoro") | 0;
+   pomodoroHistory.shortBreak = localStorage.getItem("pomodoroHistory.shortBreak") | 0;
+   pomodoroHistory.longBreak = localStorage.getItem("pomodoroHistory.longBreak") | 0;
 }
 
 function savePomodoroHistory(){

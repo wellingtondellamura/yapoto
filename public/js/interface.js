@@ -9,6 +9,8 @@ var btnShortBreak = document.getElementById("shortBreak");
 var btnLongBreak = document.getElementById("longBreak");
 
 var btnConfig = document.getElementById("config");
+var btnSoundOn = document.getElementById("soundOn");
+var btnSoundOff = document.getElementById("soundOff");
 // var btnShowHistory = document.getElementById("showHistory");
 var btnRestoreConfig = document.getElementById("restoreConfig");
 var btnSaveConfig = document.getElementById("saveConfig");
@@ -89,6 +91,24 @@ btnRestoreConfig.addEventListener("click", function(){
 //       historyPanel.style.display = "block";
 //    }
 // });
+
+btnSoundOn.addEventListener("click", function(){
+   btnSoundOn.style.visibility = "hidden";
+   btnSoundOn.style.display = "none";
+   btnSoundOff.style.visibility = "visible";
+   btnSoundOff.style.display = "inline";
+   audioTick.volume = 1;
+   audioBell.volume = 1;
+});
+
+btnSoundOff.addEventListener("click", function(){
+      btnSoundOff.style.visibility = "hidden";
+      btnSoundOff.style.display = "none";
+      btnSoundOn.style.visibility = "visible";
+      btnSoundOn.style.display = "inline";
+      audioTick.volume = 0;
+      audioBell.volume = 0;
+});
 
 btnConfig.addEventListener("click", function(){
    inputPomodoro.value = timer.pomodoro;
